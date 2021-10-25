@@ -66,8 +66,8 @@ public class Mouse {
                     last_y = poll_yPos;
                     poll_xPos = (int) v;
                     poll_yPos = (int) (Display.getHeight() - v1);
-                    current_dx = ((poll_xPos - last_x) * 8);
-                    current_dy = ((poll_yPos - last_y) * 8);
+                    current_dx = (int) ((poll_xPos - last_x) * 6.2);
+                    current_dy = (int) ((poll_yPos - last_y) * 6.2);
                     pollNeed = true;
                 }
             }
@@ -101,6 +101,9 @@ public class Mouse {
         }
         readBuffer.putInt(poll_scrollY);
         readBuffer.flip();
+        //To prevent doubleclick when moving
+        poll_button = -1;
+        poll_action = 0;
     }
 
 
